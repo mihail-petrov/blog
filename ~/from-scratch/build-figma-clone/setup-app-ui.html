@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/prism.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    
+    <div style="display: flex">
+        <div id="sidebar">
+
+            <div style="text-align: center; margin-top: 60px;">
+                <div id="avatar"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 16px;">
+                <div>Mihail Petrov, PhD</div>
+                <div style="color: #d60b52; font-weight: bold;">full-stack developer</div>
+
+                <div style="display: flex; margin-left: 69px; margin-top: 16px;">
+
+                    <a class="m-8 icon icon-github"      target="_blank" href="https://github.com/mihail-petrov"></a>
+                    <a class="m-8 icon icon-npm"         target="_blank" href="https://www.npmjs.com/~mihail-petrov.me"></a>
+                    <a class="m-8 icon icon-linkedin"    target="_blank" href="https://www.linkedin.com/in/mihail-petrov/"></a>
+                    <a class="m-8 icon icon-email"       target="_blank" href="mailto:mail@mihail-petrov.me"></a>
+                </div>
+            </div>
+
+            <div style="margin-left: 69px; margin-top: 46px;">
+                <div style="margin-top: 6px"><a href="">Tutorials</a></div>
+                <div style="margin-top: 6px"><a href="">From Scratch</a></div>
+                <div style="margin-top: 6px"><a href="">About me</a></div>
+            </div>
+        </div>
+
+        <div style="display: flex; overflow: auto; height: 100vh; width: 100%;">
+            <div id="content-main">
+
+                <div class="content-main--section">
+                    <h1>Build your own SQL Query Builder from scrach</h1>
+
+                    <p>
+                        All programmers who study the secrets of development of software products - breathe a sigh of relief the moment they find out about the advent of SQL. It cannot be otherwise, no one can deny that even though the language is complex in the long run, it seems perfectly understandable to any ordinary person. You don't need a PhD in computer science or any fancy title to understand a select or update data command. But contrary to the love of syntax, it is quite rare that we will meet a person who will embrace the idea of writing SQL queries directly in their programming code. This is perfectly normal, of course - mixing two programming languages in one file is never a pretty sight, especially for symmetry pedants like me. Additionally there's no point lying to ourselves, databases are pretty complex beasts and rarely do our work with them extend to simple CRUD operations, it's for this reason that tools like ORMs are hugely popular in the dev community to ease the us to make decisions.
+                    </p>
+
+                    <p>
+                        I'm personally a fan of the middle ground approach. I'd really like to not write SQL directly in my code, but I don't want to put full control in the hands of some mysterious ORM that will magically solve all my problems. The solution to these troubles is to build a QueryBuilder.
+                    </p>
+
+                    <p>
+                        In this series, we'll build our own Query Builder tool that:
+                    </p>
+
+                    <p>
+                        <ol>
+                            <li>to generate SQL queries of low, medium and high complexity.</li>
+                            <li>to allow code generation independent of the RDBM system - which we have chosen.</li>
+                            <li>to provide an easy-to-use and easy-to-read API that is not very different from an equivalent query written in SQL</li>
+                        </ol>
+                    </p>                
+
+                    <p>
+                        We will divide our work on the tool into the following categories:
+                    </p>
+
+                    <p>
+                        <ol>
+                            <li>Database / driver setup - създаване на абстракция за работа с RDBMS драивър</li>
+                            <li>DDL - abstraction over table and database management queries</li>
+                            <li>DML - abstraction over data creation and update requests</li>
+                            <li>DQL - basic data selection queries</li>
+                            <li>DQL - join tables</li>
+                            <li>DQL - aggregate functions and others</li>
+                        </ol>
+                    </p>                
+                </div>
+
+                <p>
+                    To implement this feature in some of our themes we decided to make use of Prism.js, which is written in JavaScript and CSS and is very usable, lightweight and fast with beautiful, clear highlighting.
+                </p>
+
+
+<pre>
+<code class="language-css">
+
+    ::placeholder {
+        color: var(--placeholder);
+        opacity: 1;
+    }
+
+</code>
+</pre>
+
+
+                <h2>How to add Prism.js syntax highlighting to any website?</h2>
+
+                <p>The implementation of PrismJS is really very simple and does not require much effort or special knowledge. All you have to do is:</p>
+
+                <p>
+                    <ol>
+                        <li>Go to the PrismJS project homepage , and hit the big ‘Download’ button at the top of the site to go to the download page. You’ll need to generate the script and CSS files for implementation by first adding a checkmark to all the coding languages that you want Prism to recognise when added to a post as well as any additional Prism plugins that you would like to use; plugins are not essential but you may find something interesting that you’d like to try out.</li>
+                        <li>With the script prepared, click both of the "Download" buttons at the bottom of the page to download the generated prism.js and prism.css files.</li>
+                        <li>Now you have to add both downloaded files to your page:</li>
+                        <li>
+
+                            <p>
+                            That’s it, the files are now added. Now to put it to use: use a CSS class to add one of your chosen supported languages from the first step to the  tag in your post (Prism supports the code tag only; this is due to HTML5 language specifications) in the following format: "language-{*language*}".
+                            </p>
+
+                            <p>
+                            For example, if you want to highlight css code then your CSS class will be "language-css". For PHP it will be "language-php". You can find a list of all the classes for each of the available code languages here: https://prismjs.com/#languages-list
+                            </p>
+                        </li>
+                    </ol>
+                </p>
+
+                <p>All our themes with built-in Prism.js come with some more advanced methods of implementation. For example, they use a custom Prism CSS style or plugins that are attached separately when needed - this allows you to fine-tune Prism whether you want to disable Prism’s functionality entirely, or just individual plugins/css (we’re always looking for new ways to optimize website speed!)</p>
+
+                <p>By default, themes with built-in Prism.js support a few important languages: language-markup, language-html, language-css, language-javascript, language-handlebars, language-less, language-php, language-scss</p>
+
+                <p>Also by default, we have implemented two plugins: Line numbers and Copy to Clipboard. The first one is responsible for numbering the code lines and the second one allows for easy copying of code to the clipboard.</p>
+                    
+                <h2>How to add more languages:</h2>
+
+                <p>After implementing Prism.js you may later decide that you want to add support for even more coding languages from the extensive list available on the Prism.js website. Thankfully, it’s possible to do this without starting again from scratch. To add languages, follow these steps:</p>
+
+                <p>
+                    <ol>
+                        <li>Go to the Prism project homepage (https://prismjs.com/), then to the download page as before, and generate a script file selecting only the coding languages you are interested in; don’t reselect any plugins. Then download the JavaScript file.</li>
+                        <li>Copy this file to your theme’s js folder (Documents/Publii/Your_Website/input/Your_Theme/assets/scripts/)</li>
+                        <li>Now the language needs to be added to the WYSIWYG editor. Open the config.json file (your theme root), go the bottom of the file and now add the new language using the following code, where ‘newlanguage-x’ is the language code from the list on the Prism.js website:</li>
+                        <li>Run Publii and you will now be able to see your new languages in the WYSIWYG editor list.</li>
+                    </ol>
+                </p>
+
+            </div>
+            <div id="content-side"> 
+
+                <div style="position: sticky; top: 20px;">
+                    <h3 class="table-of-content--title">On this page</h3>
+
+                    <ul class="table-of-content">
+                        <li>How to add Prism.js syntax highlighting to any website?</li>
+                        <li>How to add more languages:</li>
+                        <li>Extra information about something</li>
+                    </ul>
+
+                    <h3 class="table-of-content--title">In this series</h3>
+
+                    <ul class="table-of-content">
+                        <li>Database / driver setup - създаване на абстракция за работа с RDBMS драивър</li>
+                        <li>DDL - abstraction over table and database management queries</li>
+                        <li>DML - abstraction over data creation and update requests</li>
+                        <li>DQL - basic data selection queries</li>
+                        <li>DQL - join tables</li>
+                        <li>DQL - aggregate functions and others</li>
+                    </ul>
+
+                    <div class="button mt-36">
+                        <div class="icon icon-github"></div>
+                        <div class="button-text">Source Repository</div>
+                    </div>
+
+                    <div class="button mt-16">
+                        <div class="icon icon-npm"></div>
+                        <div class="button-text">NPM Repository</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/lib/prism.js"></script>
+</body>
+</html>
